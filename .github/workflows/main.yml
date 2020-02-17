@@ -1,0 +1,30 @@
+name: Build and deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Setup Node v12
+      uses: actions/setup-node@master
+      with:
+        node-version: '12.x'
+    - name: Install dependencies
+      run: npm install
+    - name: Compile Angular App
+      run: npm run build
+    - name: Upload to FTP
+      uses: SamKirkland/FTP-Deploy-Action@master
+      env:
+        FTP_SERVER: hera.fhict.nl
+        FTP_USERNAME: i359176
+        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        LOCAL_DIR: ./dist/twatter
+        REMOTE_DIR: /domains/i35917.hera.fhict.nl/public_html/Nooty
+        ARGS: --delete --delete-excluded --delete-first
