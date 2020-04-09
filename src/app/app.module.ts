@@ -7,6 +7,7 @@ import { LoginPageComponent } from './_components/login-page/login-page.componen
 import { RegisterPageComponent } from './_components/register-page/register-page.component';
 import { HomePageComponent } from './_components/home-page/home-page.component';
 import { PersonalPageComponent } from './_components/personal-page/personal-page.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,10 +17,11 @@ import { PersonalPageComponent } from './_components/personal-page/personal-page
     HomePageComponent,
     PersonalPageComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

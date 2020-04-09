@@ -1,13 +1,15 @@
 <div class="login-page">
   <div class="form-box">
 
-    <form class="login-form">
-      <input class="uk-input" type="text" placeholder="Username">
-      <input class="uk-input" type="password" placeholder="Password">
+    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" [ngClass]="loading ? 'loading' : 'idle'">
+      <input class="uk-input" type="text" placeholder="Enter username" id="username" name="username" formControlName="username" required>
+      <input class="uk-input" type="password" placeholder="Enter password" id="password" name="password" formControlName="password" required>
       <div class="form-buttons">
-        <button class="uk-button uk-button-danger">Sign-in</button>
+        <input type="submit" class="uk-button uk-button-danger" value="Log in">
       </div>
-      <p>Not registered? <a routerLink="../register">Create an account</a></p>
+      <div class="login-input_errorMsg" style="margin-top: 12px;" *ngIf="message.generic">{{message.generic}}</div>
+      <p>Not registered? <a routerLink="/register">Create an account</a></p>
+      <div class="login-errorMsg" aria-hidden="true">Email or password is not correct</div>
     </form>
   </div>
 </div>

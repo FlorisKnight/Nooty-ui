@@ -1,15 +1,15 @@
 <div class="register-page">
   <div class="form-box">
-    <form class="register-form">
-      <input class="uk-input" type="text" placeholder="Username">
-      <input class="uk-input" type="text" placeholder="Display Name">
-      <input class="uk-input" type="email" placeholder="E-Mail">
-      <input class="uk-input" type="password" placeholder="Password">
-      <input class="uk-input" type="password" placeholder="Re-type Password">
+    <form class="register-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <input class="uk-input" type="email" placeholder="Enter email address" name="email" id="email" required formControlName="email">
+      <input class="uk-input" type="text" placeholder="Enter username name" name="username" id="username" required formControlName="username">
+      <input class="uk-input" type="text" placeholder="Enter display name" name="displayname" id="displayname" required formControlName="displayname">
+      <input class="uk-input" type="password" placeholder="Enter password" name="password" id="password" required formControlName="password">
       <div class="form-buttons">
-        <button class="uk-button uk-button-danger">Create account</button>
+        <input type="submit" class="uk-button uk-button-danger" value="Create account">
       </div>
-      <p>Already registered? <a routerLink="../login">Sign-in here</a></p>
+      <p>Already registered? <a routerLink="/login">Sign-in here</a></p>
     </form>
+    <div class="register_errorMsg" aria-hidden="true">Some input fields are invalid</div>
   </div>
 </div>
