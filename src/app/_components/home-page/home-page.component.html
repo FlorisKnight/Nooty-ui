@@ -1,1 +1,28 @@
-<p>home-page works!</p>
+<div class="home-container">
+  <div class="time-line">
+    <h1>Home</h1>
+    <div class="noot-input">
+      <img class="profile-picture" src={{user.profile_image_url}}>
+      <textarea class="uk-input" [(ngModel)]='nootText' maxlength="140" name="listFilter" placeholder="What's happening?"></textarea>
+      <button
+        class="uk-button uk-button-primary"
+        [disabled]="!nootText"
+        (click)="sendNoot()">
+        Twat</button>
+      <p class="char-left">Characters left: {{140 - nootText.length}}</p>
+    </div>
+    <div class="noot" *ngFor="let noot of noots">
+      <div class="noot-left">
+        <img class="profile-picture" src={{noot.user.profile_image_url}}>
+      </div>
+      <div class="noot-right">
+        <div class="twat-right-top">
+          <p class="display-name">{{noot.user.displayname}}</p>
+          <p class="username">@{{noot.user.username}}</p>
+          <p class="noot-time-stamp" title={{noot.formatTitle()}}>{{noot.formatTimestamp()}}</p>
+        </div>
+        <p class="noot-text">{{noot.text}}</p>
+      </div>
+    </div>
+  </div>
+</div>

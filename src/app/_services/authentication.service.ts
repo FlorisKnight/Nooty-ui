@@ -25,14 +25,10 @@ export class AuthenticationService {
       return false;
     }
 
-    if (!user.token) {
-      return false;
-    }
-
     return true;
   }
 
-  public async login(email: string, password: string): Promise<void> {
+  public async login(username: string, password: string): Promise<void> {
     return new Promise((resolve, reject) => {
       fetch(`${environment.api_url}/login`, {
         method: 'POST',
@@ -42,7 +38,7 @@ export class AuthenticationService {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          email,
+          username,
           password
         })
       })
@@ -53,13 +49,12 @@ export class AuthenticationService {
             return;
           }
 
-          if (data.user) {
+          if (data.id) {
             const user = new User({
-              id: data.user.id,
-              email: data.user.email,
-              username: data.user.username,
-              displayname: data.user.displayname,
-              token: data.user.token,
+              id: data.id,
+              email: data.email,
+              username: data.username,
+              displayname: data.displayname,
             });
 
             this.storageService.user.next(user);
@@ -110,13 +105,12 @@ export class AuthenticationService {
             return;
           }
 
-          if (data.user) {
+          if (data.id) {
             const user = new User({
-              id: data.user.id,
-              email: data.user.email,
-              username: data.user.username,
-              displayname: data.user.displayname,
-              token: data.user.token,
+              id: data.id,
+              email: data.email,
+              username: data.username,
+              displayname: data.displayname,
             });
 
             this.storageService.user.next(user);

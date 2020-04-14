@@ -127,6 +127,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "nooty-ui"
+    }
+  },
+  "defaultProject": "nooty-ui",
+  "cli": {
+    "analytics": false
+  }
 }

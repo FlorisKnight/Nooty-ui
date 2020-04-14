@@ -14,7 +14,7 @@ export class LoginPageComponent implements OnInit {
   submitted = false;
   redirectTo: string;
   message = {
-    email: '',
+    username: '',
     password: '',
     generic: ''
   };
@@ -45,7 +45,7 @@ export class LoginPageComponent implements OnInit {
     }
 
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
@@ -55,13 +55,13 @@ get f(): { [key: string]: AbstractControl } {
 }
 
 onSubmit(): void {
-  this.message.email = null;
+  this.message.username = null;
   this.message.password = null;
   this.message.generic = null;
   this.submitted = true;
   this.loading = true;
 
-  this.authenticationService.login(this.f.email.value, this.f.password.value)
+  this.authenticationService.login(this.f.username.value, this.f.password.value)
   .then(() => {
     // On succesfull login
     if (this.redirectTo) {
@@ -72,7 +72,7 @@ onSubmit(): void {
   })
   .catch((error) => {
     // Failed login
-    this.message.generic = error?.message || 'Invalid email or password';
+    this.message.generic = error?.message || 'Invalid username or password';
 
     setTimeout(() => {
       this.message.generic = null;
