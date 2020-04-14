@@ -7,7 +7,8 @@ import { LoginPageComponent } from './_components/login-page/login-page.componen
 import { RegisterPageComponent } from './_components/register-page/register-page.component';
 import { HomePageComponent } from './_components/home-page/home-page.component';
 import { PersonalPageComponent } from './_components/personal-page/personal-page.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {GravatarModule} from 'ngx-gravatar';
 
 @NgModule({
   declarations: [
@@ -17,11 +18,13 @@ import {ReactiveFormsModule} from '@angular/forms';
     HomePageComponent,
     PersonalPageComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        ReactiveFormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    GravatarModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

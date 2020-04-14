@@ -2,7 +2,7 @@
   <div class="time-line">
     <h1>Home</h1>
     <div class="noot-input">
-      <img class="profile-picture" src={{user.profile_image_url}}>
+      <img ngxGravatar class="profile-picture" [email]=getEmail() fallback="retro">
       <textarea class="uk-input" [(ngModel)]='nootText' maxlength="140" name="listFilter" placeholder="What's happening?"></textarea>
       <button
         class="uk-button uk-button-primary"
@@ -13,7 +13,7 @@
     </div>
     <div class="noot" *ngFor="let noot of noots">
       <div class="noot-left">
-        <img class="profile-picture" src={{noot.user.profile_image_url}}>
+        <img ngxGravatar class="profile-picture" [email]=noot.user.email fallback="retro">
       </div>
       <div class="noot-right">
         <div class="twat-right-top">
