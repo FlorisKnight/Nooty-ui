@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+}
+
+.profile-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .profile-picture {
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    min-width: 100px;
+    min-height: 100px;
+    margin-right: 10px;
+  }
+  .user-info {
+    padding: 20px 0;
+    border-bottom: 1px solid #eeeeee;
+  }
+  .display-name{
+    font-weight: bolder;
+    font-size: 2em;
+    margin-right: 10px;
+  }
+  .username{
+    font-weight: lighter;
+    font-size: 1.3em;
+    margin-right: 10px;
+  }
+}
+
+.time-line{
+  width: 80%;
+  min-width: 400px;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+}

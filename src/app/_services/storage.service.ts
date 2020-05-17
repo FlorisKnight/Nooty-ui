@@ -8,4 +8,5 @@ import {User} from '../_domain/User';
 })
 export class StorageService {
   public user: StoredBehaviorSubject<User> = new StoredBehaviorSubject<User>('user');
+  public following: StoredBehaviorSubject<Array<string>> = new StoredBehaviorSubject<Array<string>>('following');
 }

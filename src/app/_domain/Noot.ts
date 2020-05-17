@@ -9,19 +9,19 @@ export class Noot {
   public id: string;
   public text: string;
   public timestamp: string;
-  public user: User;
+  public userId: string;
 
-  public newNoot(text: string, timestamp: string, user: User) {
+  public newNoot(text: string, timestamp: string, user: string) {
     this.text = text;
     this.timestamp = timestamp;
-    this.user = user;
+    this.userId = user;
   }
 
-  public newNootId(id: string, text: string, timestamp: string, user: User) {
+  public newNootId(id: string, text: string, timestamp: string, user: string) {
     this.id = id;
     this.text = text;
     this.timestamp = timestamp;
-    this.user = user;
+    this.userId = user;
   }
 
   public formatTimestamp(): string {

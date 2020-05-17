@@ -4,6 +4,8 @@ import {LoginPageComponent} from './_components/login-page/login-page.component'
 import {RegisterPageComponent} from './_components/register-page/register-page.component';
 import {HomePageComponent} from './_components/home-page/home-page.component';
 import {AuthGuard} from './_services/auth.guard';
+import {PersonalPageComponent} from './_components/personal-page/personal-page.component';
+import {GlobalTimelineComponent} from './_components/global-timeline/global-timeline.component';
 
 
 const routes: Routes = [];
@@ -15,6 +17,9 @@ const routes: Routes = [];
     { path: '',   redirectTo: '/login', pathMatch: 'full' },
     // ========= BEGIN PROTECTED COMPONENTS ==========
     { path: 'home', component: HomePageComponent, canActivate: [AuthGuard]},
+    { path: 'profile', component: PersonalPageComponent, canActivate: [AuthGuard] },
+    { path: 'global', component: GlobalTimelineComponent, canActivate: [AuthGuard] },
+
     // ========== END PROTECTED COMPONENTS ===========
   ])],
   exports: [RouterModule]

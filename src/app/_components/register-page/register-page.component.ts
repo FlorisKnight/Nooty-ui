@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterStateSnapshot  } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import {AuthenticationService} from '../../_services/authentication.service';
+import {FollowService} from '../../_services/follow.service';
+import {StorageService} from '../../_services/storage.service';
 
 @Component({
   selector: 'app-register-page',
@@ -22,6 +24,8 @@ export class RegisterPageComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private authenticationService: AuthenticationService,
+              private followService: FollowService,
+              private storageService: StorageService,
               private router: Router) { }
 
   ngOnInit(): void {
@@ -52,10 +56,11 @@ export class RegisterPageComponent implements OnInit {
     this.loading = true;
 
     this.authenticationService.register(
-      this.f.email.value, this.f.username.value, this.f.displayname.value, this.f.password.value
+      this.f.username.value, this.f.displayname.value, this.f.email.value, this.f.password.value
     )
       .then(() => {
-        this.router.navigate(['/login?action=postcreation']);
+        this.getFollowing();
+        this.router.navigate(['/login'], { queryParams: { action: 'postcreation' } });
       })
       .catch((error) => {
         // Failed login
@@ -69,5 +74,10 @@ export class RegisterPageComponent implements OnInit {
         this.submitted = false;
         this.loading = false;
       });
+  }
+
+  private getFollowing(): void {
+    const user = this.storageService.user.getValue();
+    this.followService.getFollowing(user.id);
   }
 }

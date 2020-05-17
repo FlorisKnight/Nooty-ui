@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import {AuthenticationService} from '../../_services/authentication.service';
 import {Router, RouterStateSnapshot} from '@angular/router';
+import {FollowService} from '../../_services/follow.service';
+import {StorageService} from '../../_services/storage.service';
 
 @Component({
   selector: 'app-login-page',
@@ -21,7 +23,9 @@ export class LoginPageComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private authenticationService: AuthenticationService,
-              private router: Router) { }
+              private router: Router,
+              private followService: FollowService,
+              private storageService: StorageService) { }
 
   ngOnInit(): void {
     const snapshot: RouterStateSnapshot = this.router.routerState.snapshot;
@@ -36,6 +40,7 @@ export class LoginPageComponent implements OnInit {
       case 'postcreation': {
         // Let the user know the account has been created and they should login
         this.message.generic = 'Your account has been created succesfully, you may now login.';
+        this.router.navigate(['/login']);
         break;
       }
     }
@@ -63,11 +68,12 @@ onSubmit(): void {
 
   this.authenticationService.login(this.f.username.value, this.f.password.value)
   .then(() => {
+    this.getFollowing()
     // On succesfull login
     if (this.redirectTo) {
       this.router.navigate([this.redirectTo]);
     } else {
-      this.router.navigate(['/']);
+      this.router.navigate(['/home']);
     }
   })
   .catch((error) => {
@@ -83,5 +89,8 @@ onSubmit(): void {
     this.loading = false;
   });
 }
-
+ private getFollowing(): void {
+    const user = this.storageService.user.getValue();
+    this.followService.getFollowing(user.id);
+ }
 }

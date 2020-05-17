@@ -9,6 +9,9 @@ import { HomePageComponent } from './_components/home-page/home-page.component';
 import { PersonalPageComponent } from './_components/personal-page/personal-page.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {GravatarModule} from 'ngx-gravatar';
+import { HeaderComponent } from './_components/header/header.component';
+import { NootComponent } from './_components/noot/noot.component';
+import { GlobalTimelineComponent } from './_components/global-timeline/global-timeline.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import {GravatarModule} from 'ngx-gravatar';
     LoginPageComponent,
     RegisterPageComponent,
     HomePageComponent,
-    PersonalPageComponent
+    PersonalPageComponent,
+    HeaderComponent,
+    NootComponent,
+    GlobalTimelineComponent
   ],
   imports: [
     BrowserModule,

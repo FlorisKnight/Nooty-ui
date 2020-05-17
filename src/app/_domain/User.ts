@@ -15,4 +15,10 @@ export class User {
   public displayname: string;
   public profileImageUrl: string;
   public token: string;
+
+  public toObject(): object {
+    const u = this as User;
+    Object.keys(u).forEach(key => u[key] === undefined ? delete u[key] : {});
+    return u;
+  }
 }

@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+}
+
+.noot {
+  border-bottom: 1px solid #eeeeee;
+  margin-bottom: 1em;
+  padding: 0.3em;
+}
+
+.profile-picture {
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  min-height: 50px;
+}
+
+.user-info {
+  padding: 0.8em;
+}
+
+.display-name{
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.username{
+  font-weight: lighter;
+  margin-right: 10px;
+}
+
+.noot-time-stamp{
+  font-weight: lighter;
+}
+
+.noot-text{
+  padding: 0 1em;
+  width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}

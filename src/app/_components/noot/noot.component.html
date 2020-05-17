@@ -1,0 +1,13 @@
+  <div class="uk-flex uk-flex-row noot" *ngIf="user">
+    <div class="uk-flex uk-flex-column">
+      <img ngxGravatar class="profile-picture" [email]=user.email fallback="retro">
+    </div>
+    <div class="uk-flex uk-flex-column">
+      <div class="uk-flex uk-flex-row user-info">
+        <p [routerLink]="['/profile']" [queryParams]="{ userId: user.id}" class="display-name">{{user.displayname}}</p>
+        <p class="username">@{{user.username}}</p>
+        <p class="noot-time-stamp" title={{noot.formatTitle()}}>{{noot.formatTimestamp()}}</p>
+      </div>
+      <p class="noot-text">{{noot.text}}</p>
+    </div>
+  </div>

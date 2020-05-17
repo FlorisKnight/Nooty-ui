@@ -30,7 +30,7 @@ export class AuthenticationService {
 
   public async login(username: string, password: string): Promise<void> {
     return new Promise((resolve, reject) => {
-      fetch(`${environment.api_url}/login`, {
+      fetch(`${environment.api_url}/account/login`, {
         method: 'POST',
         credentials: 'omit',
         cache: 'no-cache',
@@ -84,7 +84,7 @@ export class AuthenticationService {
 
   public async register(username: string, displayname: string, email: string, password: string): Promise<void> {
     return new Promise((resolve, reject) => {
-      fetch(`${environment.api_url}/register`, {
+      fetch(`${environment.api_url}/account/register`, {
         method: 'POST',
         credentials: 'omit',
         cache: 'no-cache',
@@ -139,6 +139,7 @@ export class AuthenticationService {
   }
 
   public async logout(): Promise<void> {
+    this.storageService.following.clear();
     return this.storageService.user.clear();
   }
 }

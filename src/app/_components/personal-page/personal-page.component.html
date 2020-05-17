@@ -1,1 +1,16 @@
-<p>personal-page works!</p>
+<app-header></app-header>
+<ng-container *ngIf="user">
+  <div class="profile-container">
+    <div class="time-line">
+      <div class="uk-flex uk-flex-row uk-flex-middle user-info">
+        <img ngxGravatar class="profile-picture" [email]=user.email fallback="retro">
+        <p class="display-name">{{user.displayname}}</p>
+        <p class="username">@{{user.displayname}}</p>
+        <input type="button" class="uk-button uk-button-default" [(ngModel)]="textFollowBtn" (click)="updateFollow()">
+      </div>
+      <ng-container *ngFor="let noot of noots">
+        <app-noot [noot]="noot"></app-noot>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>

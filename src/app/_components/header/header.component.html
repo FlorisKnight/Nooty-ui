@@ -1,1 +1,19 @@
-<p>header works!</p>
+<header>
+  <div class="uk-navbar-container nav-bar" uk-navbar>
+    <div class="uk-navbar-left">
+      <h1 routerLink="/home" class="title">Nooty</h1>
+    </div>
+    <div class="uk-navbar-right">
+      <div class="user">
+        <div class="user-left uk-inline">
+          <img ngxGravatar class="profile-picture uk-position-center" [email]=user.email fallback="retro">
+        </div>
+        <div class="user-right uk-inline">
+            <a [routerLink]="['/profile']" [queryParams]="{userId: user.id}" ><p class="display-name">{{user.displayname}}</p></a>
+            <p class="username">@{{user.username}}</p>
+        </div>
+      </div>
+      <a class="uk-button-danger btn-logout" [routerLink]="['/login']" [queryParams]="{action: 'logout'}">Logout</a>
+    </div>
+  </div>
+</header>
