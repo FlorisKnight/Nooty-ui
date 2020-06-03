@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import { GravatarModule } from 'ngx-gravatar';
 import {NootService} from '../../_services/noot.service';
 import {FollowService} from '../../_services/follow.service';
+import {EncapsulatedMessage} from '../../_services/websocket-mapper.service';
 
 @Component({
   selector: 'app-home-page',
@@ -50,6 +51,30 @@ export class HomePageComponent implements OnInit {
       this.noots.unshift(noot2);
     });
     this.nootText = '';
+  }
+
+  handleMessage(message: EncapsulatedMessage) {
+    // this methed handles all the incoming messages
+    switch (message.messageType) {
+      default:
+        console.log('Unknown messageType: ' + message.messageType);
+        break;
+      case ('twat.post'):
+        const noot: Noot = JSON.parse(message.messageData);
+        console.log(message.messageData);
+        this.noots.unshift(noot);
+        break;
+      case ('twat.init'):
+        const initTwats: Noot[] = JSON.parse(message.messageData);
+        console.log(message.messageData);
+        this.noots.concat(initTwats);
+        console.log('received');
+        break;
+      case ('twat.paginate'):
+        const paginateTwats: Noot[] = JSON.parse(message.messageData);
+        this.noots.concat(paginateTwats);
+        break;
+    }
   }
 
   ngOnInit(): void {

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api_url: 'http://nootygateway.kn01.fhict.nl'
+  api_url: 'http://localhost:32777',
+  websocket_url: undefined
 };
 
 /*

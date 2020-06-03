@@ -55,6 +55,7 @@ export class AuthenticationService {
               email: data.email,
               username: data.username,
               displayname: data.displayname,
+              token: data.token
             });
 
             this.storageService.user.next(user);
@@ -111,6 +112,7 @@ export class AuthenticationService {
               email: data.email,
               username: data.username,
               displayname: data.displayname,
+              token: data.token
             });
 
             this.storageService.user.next(user);

@@ -31,18 +31,9 @@ export class PersonalPageComponent implements OnInit {
     const snapshot: RouterStateSnapshot = this.router.routerState.snapshot;
     this.userService.getByID(snapshot.root.queryParams.userId).then(user => {
       this.user = user;
-    });
 
-    this.followService.getFollowing(this.storageService.user.getValue().id).then(following => {
-      for (const u of following) {
-        if (u === this.user.id) {
-          this.textFollowBtn = 'unfollow';
-          this.following = true;
-          break;
-        }
-      }
+      this.isFollowing();
     });
-
 
     this.nootService.getNootsFromUser(snapshot.root.queryParams.userId).then(list => {
         for (const n of list) {
@@ -52,6 +43,18 @@ export class PersonalPageComponent implements OnInit {
           noot.timestamp = n.timestamp;
           noot.userId = n.userId;
           this.noots.unshift(noot);
+        }
+      });
+    }
+
+    isFollowing(): void {
+      this.followService.getFollowing(this.storageService.user.getValue().id).then(following => {
+        for (const u of following) {
+          if (u === this.user.id) {
+            this.textFollowBtn = 'unfollow';
+            this.following = true;
+            break;
+          }
         }
       });
     }

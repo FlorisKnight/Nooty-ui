@@ -132,5 +132,10 @@
   "defaultProject": "nooty-ui",
   "cli": {
     "analytics": false
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
   }
 }
