@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_url: 'http://localhost:32775',
+  api_url: 'http://localhost:8080',
   websocket_url: undefined
 };
 
