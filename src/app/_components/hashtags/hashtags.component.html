@@ -1,0 +1,18 @@
+<app-header></app-header>
+<div class="hashtag-container">
+  <div class="time-line">
+    <div class="hashtags uk-flex uk-flex-row">
+      <ng-container *ngFor="let hashtag of hashtags">
+        <input type="button" value="{{hashtag.hashtag}}" (click)="getNootsFromHashtag(hashtag.id); changeHashtag(hashtag.hashtag)" class="uk-button uk-button-default hashtag">
+      </ng-container>
+    </div>
+    <div class="searchHashtag uk-flex uk-flex-row">
+      <input type="text" placeholder="search for a hashtag..." class="uk-input hashtag-input" [(ngModel)]="searchInput" (keydown.enter)="searchHastag()">
+    </div>
+    <h2>Search results for: {{hashtag}}</h2>
+    <div class="spinner" *ngIf="noots.length == 0"><p>Click on a hashtag to view noots</p></div>
+    <ng-container *ngFor="let noot of noots">
+      <app-noot [noot]="noot"></app-noot>
+    </ng-container>
+  </div>
+</div>

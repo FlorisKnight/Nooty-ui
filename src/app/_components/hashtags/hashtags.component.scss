@@ -1,0 +1,33 @@
+.hashtag-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.time-line{
+  width: 80%;
+  min-width: 400px;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hashtags {
+  padding: 10px;
+  width: calc(100% - 20px);
+  overflow: auto;
+  margin-bottom: 30px;
+}
+
+.hashtag {
+  margin: 0 10px;
+}
+
+.spinner {
+  margin: 30px auto;
+}
+
+.hashtag-input {
+  width: 100%;
+  margin-bottom: 20px;
+}

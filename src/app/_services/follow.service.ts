@@ -30,6 +30,24 @@ export class FollowService {
     });
   }
 
+  public getFollowers(id: string): Promise<Array<string>> {
+    return new Promise((resolve) => {
+      fetch(`${environment.api_url}/follow/followers/${id}`, {
+        method: 'GET',
+        credentials: 'omit',
+        cache: 'no-cache',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          this.storageService.following.next(data);
+          resolve(data);
+        });
+    });
+  }
+
   public follow(id: string): Promise<void> {
     return new Promise((resolve, reject) => {
       const storedUser = this.storageService.user.getValue();

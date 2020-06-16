@@ -13,28 +13,6 @@
   }
 }
 
-.noot-input {
-  border-top: 1px solid #eeeeee;
-  border-bottom: 1px solid #eeeeee;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 10px;
-  img{
-    margin-right: 20px;
-  }
-  textarea {
-    resize: vertical;
-    width: calc(100% - 80px);
-    min-height: 80px;
-    background: transparent;
-    border: transparent;
-  }
-  button {
-    margin-top: 10px;
-    margin-left: 70px;
-  }
-}
-
 .time-line{
   width: 80%;
   max-width: 800px;
@@ -50,9 +28,36 @@
   min-height: 50px;
 }
 
-.char-left{
-  margin-left: calc(100% - 38ch);
+* {
+  margin: 0;
+}
+
+.noot {
+  border-bottom: 1px solid #eeeeee;
+  margin-bottom: 1em;
+  padding: 0.3em;
+}
+
+.profile-picture {
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  min-height: 50px;
+}
+
+.user-info {
+  padding: 0.8em;
+}
+
+.display-name{
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.username{
   font-weight: lighter;
+  margin-right: 10px;
 }
 
 .spinner {

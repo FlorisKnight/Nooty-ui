@@ -6,6 +6,8 @@ import {HomePageComponent} from './_components/home-page/home-page.component';
 import {AuthGuard} from './_services/auth.guard';
 import {PersonalPageComponent} from './_components/personal-page/personal-page.component';
 import {GlobalTimelineComponent} from './_components/global-timeline/global-timeline.component';
+import {UserListComponent} from './_components/user-list/user-list.component';
+import {HashtagsComponent} from './_components/hashtags/hashtags.component';
 
 
 const routes: Routes = [];
@@ -19,7 +21,8 @@ const routes: Routes = [];
     { path: 'home', component: HomePageComponent, canActivate: [AuthGuard]},
     { path: 'profile', component: PersonalPageComponent, canActivate: [AuthGuard] },
     { path: 'global', component: GlobalTimelineComponent, canActivate: [AuthGuard] },
-
+    { path: 'users', component: UserListComponent, canActivate: [AuthGuard] },
+    { path: 'hashtags', component: HashtagsComponent, canActivate: [AuthGuard] },
     // ========== END PROTECTED COMPONENTS ===========
   ])],
   exports: [RouterModule]

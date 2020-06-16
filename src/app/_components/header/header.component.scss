@@ -12,6 +12,7 @@ header {
 .title {
   font-weight: bolder;
   padding-left: 20px;
+  margin-right: 30px;
 }
 
 .user {
@@ -40,6 +41,7 @@ header {
   height: fit-content;
   padding: 5px 10px;
   border-radius: 25px;
+  margin: 0 20px;
 }
 
 .profile-picture {
@@ -58,5 +60,18 @@ header {
   font-weight: lighter;
 }
 
+.nav-item {
+  margin-left: 10px;
+}
+
+@media only screen and (max-width: 450px) {
+  .user {
+    display: none;
+  }
+
+  .nav-item {
+    display: none;
+  }
+}
 
 

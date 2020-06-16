@@ -65,18 +65,15 @@ export class NootService {
     });
   }
 
-  public async getNoot(id: string): Promise<void> {
+  public async getNoot(id: string): Promise<Noot> {
     return new Promise((resolve, reject) => {
-      fetch(`${environment.api_url}/noots/${id}`, {
-        method: 'POST',
+      fetch(`${environment.api_url}/noot/${id}`, {
+        method: 'GET',
         credentials: 'omit',
         cache: 'no-cache',
         headers: {
           'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          id
-        })
+        }
       })
         .then((response) => response.json())
         .then((data) => {
@@ -90,7 +87,7 @@ export class NootService {
             noot.text = data.text;
             noot.timestamp = data.timestamp;
             noot.userId = data.userId;
-            resolve();
+            resolve(noot);
           } else {
             reject(new GenericError({
               name: 'NoContentError',

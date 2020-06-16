@@ -18,6 +18,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.storageService.user.getValue();
+    if (this.user.id === undefined) {
+      this.router.navigate(['/login'], { queryParams: { action: 'logout' } });
+
+    }
   }
 
 }

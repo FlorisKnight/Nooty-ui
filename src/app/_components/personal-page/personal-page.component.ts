@@ -16,6 +16,8 @@ export class PersonalPageComponent implements OnInit {
   public user: User;
   public noots: Array<Noot> = [];
   public textFollowBtn: string;
+  public followingAmount: number;
+  public followerAmount: number;
   private following: boolean;
 
   constructor(private router: Router,
@@ -27,12 +29,16 @@ export class PersonalPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.textFollowBtn = 'Follow';
+    this.followingAmount = 0;
+    this.followerAmount = 0;
     this.following = false;
     const snapshot: RouterStateSnapshot = this.router.routerState.snapshot;
     this.userService.getByID(snapshot.root.queryParams.userId).then(user => {
       this.user = user;
 
       this.isFollowing();
+      this.getFollowers();
+      this.getFollowing();
     });
 
     this.nootService.getNootsFromUser(snapshot.root.queryParams.userId).then(list => {
@@ -55,6 +61,26 @@ export class PersonalPageComponent implements OnInit {
             this.following = true;
             break;
           }
+        }
+      });
+    }
+
+    getFollowers(): void {
+      this.followService.getFollowers(this.storageService.user.getValue().id).then(following => {
+        let i = 1;
+        for (const u of following) {
+          this.followerAmount = i;
+          i++;
+        }
+      });
+    }
+
+    getFollowing(): void {
+      this.followService.getFollowing(this.storageService.user.getValue().id).then(following => {
+        let i = 1;
+        for (const u of following) {
+          this.followingAmount = i;
+          i++;
         }
       });
     }

@@ -12,6 +12,8 @@ import {GravatarModule} from 'ngx-gravatar';
 import { HeaderComponent } from './_components/header/header.component';
 import { NootComponent } from './_components/noot/noot.component';
 import { GlobalTimelineComponent } from './_components/global-timeline/global-timeline.component';
+import { UserListComponent } from './_components/user-list/user-list.component';
+import { HashtagsComponent } from './_components/hashtags/hashtags.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { GlobalTimelineComponent } from './_components/global-timeline/global-ti
     PersonalPageComponent,
     HeaderComponent,
     NootComponent,
-    GlobalTimelineComponent
+    GlobalTimelineComponent,
+    UserListComponent,
+    HashtagsComponent
   ],
   imports: [
     BrowserModule,

@@ -9,9 +9,10 @@
         class="uk-button uk-button-primary"
         [disabled]="!nootText"
         (click)="sendNoot()">
-        Twat</button>
+        Noot</button>
       <p class="char-left">Characters left: {{140 - nootText.length}}</p>
     </div>
+    <div uk-spinner class="spinner" *ngIf="noots.length == 0"></div>
     <ng-container *ngFor="let noot of noots">
       <app-noot [noot]="noot"></app-noot>
     </ng-container>

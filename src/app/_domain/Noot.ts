@@ -3,18 +3,26 @@ import { User } from './User';
 import { timestampToMoment, isLessThan24HoursAgo, momentToDate, momentToHours, momentToTimeAndDate } from '../_util/time';
 
 export class Noot {
-  constructor() {
+  constructor(){
   }
 
   public id: string;
   public text: string;
   public timestamp: string;
   public userId: string;
+  public user: User;
 
   public newNoot(text: string, timestamp: string, user: string) {
     this.text = text;
     this.timestamp = timestamp;
     this.userId = user;
+  }
+
+  public newNootNoot(noot: Noot) {
+    this.id = noot.id;
+    this.text = noot.text;
+    this.timestamp = noot.timestamp;
+    this.userId = noot.userId;
   }
 
   public newNootId(id: string, text: string, timestamp: string, user: string) {

@@ -14,9 +14,24 @@
     min-height: 100px;
     margin-right: 10px;
   }
+  .user-header {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #eeeeee;
+  }
+  .user-header-left {
+    width: 50%;
+  }
+  .user-header-right {
+    justify-content: flex-end;
+    width: 50%;
+    .follow-text {
+      font-weight: bold;
+      padding-right: 10px;
+    }
+  }
   .user-info {
     padding: 20px 0;
-    border-bottom: 1px solid #eeeeee;
   }
   .display-name{
     font-weight: bolder;
@@ -36,4 +51,8 @@
   max-width: 800px;
   display: flex;
   flex-direction: column;
+}
+
+.spinner {
+  margin: 30px auto;
 }

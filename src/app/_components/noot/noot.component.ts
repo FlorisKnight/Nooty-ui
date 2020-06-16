@@ -17,9 +17,18 @@ export class NootComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getByID(this.noot.userId).then(user => {
-      this.user = user;
-    });
+    try {
+      if (this.noot.user) {
+        this.user = this.noot.user;
+      } else {
+        this.userService.getByID(this.noot.userId).then(user => {
+          this.user = user;
+        });
+      }
+    } catch (e) {
+      this.userService.getByID(this.noot.userId).then(user => {
+        this.user = user;
+      });
+    }
   }
-
 }
