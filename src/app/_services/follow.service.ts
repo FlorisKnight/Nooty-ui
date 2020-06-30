@@ -64,10 +64,7 @@ export class FollowService {
         })
       })
         .then((response) => {
-          if (response.status === 204) {
-            const following = this.storageService.following.getValue();
-            following.push(id);
-            this.storageService.following.next(following);
+          if (response.status === 200) {
             resolve();
           } else {
             reject();
@@ -92,16 +89,7 @@ export class FollowService {
         })
       })
         .then((response) => {
-          if (response.status === 204) {
-            const following = this.storageService.following.getValue();
-            let i = 0;
-            for (const f of following) {
-              if (f === id) {
-                following.splice(i);
-              }
-              i++;
-            }
-            this.storageService.following.next(following);
+          if (response.status === 200) {
             resolve();
           } else {
             reject();
